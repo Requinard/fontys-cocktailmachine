@@ -15,6 +15,7 @@ namespace fontys_cocktailmachine
         public Form1()
         {
             InitializeComponent();
+            MessageBox.Show("Lolololololll");
         }
     }
 }
