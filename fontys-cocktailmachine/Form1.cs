@@ -18,9 +18,12 @@ namespace fontys_cocktailmachine
             InitializeComponent();
             customRecept = new List<int>();
             btnStart.Visible = true;
+            btnDone.Visible = false;
+            btnBack.Visible = true;
+
             btnAlcohol.Visible = false;
             btnNonAlcohol.Visible = false;
-            btnBack.Visible = false;
+                        
             btnSinaasappelsap.Visible = false;
             btnCola.Visible = false;
             btnTonic.Visible = false;
@@ -32,7 +35,7 @@ namespace fontys_cocktailmachine
             btnRum.Visible = false;
             btnPerzik.Visible = false;
 
-            btnDone.Visible = false;
+            
         }
         private void fill()
         {
@@ -45,7 +48,7 @@ namespace fontys_cocktailmachine
                 progressBar.Value = progressBar.Maximum;
             }
             btnDone.Visible = true;
-            if (progressBar.Value == 100)
+            if (progressBar.Value == 150)
             {
                 klaar();
             }
@@ -56,7 +59,7 @@ namespace fontys_cocktailmachine
             btnStart.Visible = true;
             btnAlcohol.Visible = false;
             btnNonAlcohol.Visible = false;
-            btnBack.Visible = false;
+            btnBack.Visible = true;
             btnSinaasappelsap.Visible = false;
             btnCola.Visible = false;
             btnTonic.Visible = false;
@@ -67,6 +70,9 @@ namespace fontys_cocktailmachine
             btnTequilla.Visible = false;
             btnRum.Visible = false;
             btnPerzik.Visible = false;
+            progressBar.Value = 0;
+
+
 
     }
         private void btnStart_Click(object sender, EventArgs e)
@@ -87,7 +93,8 @@ namespace fontys_cocktailmachine
             btnTequilla.Visible = false;
             btnRum.Visible = false;
             btnPerzik.Visible = false;
-            progressBar.Value = 0;
+            
+            
             progressBar.Visible = true;
 
 
@@ -95,8 +102,11 @@ namespace fontys_cocktailmachine
         }
 
         private void btnBack_Click(object sender, EventArgs e)
-        {
-            if (btnAlcohol.Visible)
+        {   if (btnStart.Visible)
+            {
+                Close();
+            }
+            if (btnAlcohol.Visible && btnNonAlcohol.Visible)
             {
                 homeScreen();
             }
@@ -104,6 +114,7 @@ namespace fontys_cocktailmachine
             {
                 btnStart_Click(sender, e);
             }
+            
         }
 
         private void btnNonAlcohol_Click(object sender, EventArgs e)
@@ -145,6 +156,7 @@ namespace fontys_cocktailmachine
 
         private void klaar()
         {
+            MessageBox.Show("//code naar arduino");
             //code naar arduino
 
         }
@@ -166,6 +178,46 @@ namespace fontys_cocktailmachine
             customRecept.Add(2);
             fill();
         }
+
+        private void btnRum_Click(object sender, EventArgs e)
+        {
+            customRecept.Add(3);
+            fill();
+        }
+
+        private void btnVodka_Click(object sender, EventArgs e)
+        {
+            customRecept.Add(4);
+            fill();
+        }
+
+        private void btnGin_Click(object sender, EventArgs e)
+        {
+            customRecept.Add(5);
+            fill();
+        }
+
+        private void btnPerzik_Click(object sender, EventArgs e)
+        {
+            customRecept.Add(6);
+            fill();
+        }
+
+        private void btnMartini_Click(object sender, EventArgs e)
+        {
+            customRecept.Add(7);
+            fill();
+        }
+
+        private void btnTequilla_Click(object sender, EventArgs e)
+        {
+            customRecept.Add(8);
+            fill();
+        }
+
+
+
+        
 
 
 

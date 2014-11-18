@@ -80,9 +80,9 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(718, 428);
+            this.btnBack.Location = new System.Drawing.Point(723, 444);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(105, 50);
+            this.btnBack.Size = new System.Drawing.Size(182, 81);
             this.btnBack.TabIndex = 2;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             // 
             // btnCola
             // 
-            this.btnCola.Location = new System.Drawing.Point(197, 19);
+            this.btnCola.Location = new System.Drawing.Point(197, 279);
             this.btnCola.Name = "btnCola";
             this.btnCola.Size = new System.Drawing.Size(143, 90);
             this.btnCola.TabIndex = 3;
@@ -100,7 +100,7 @@
             // 
             // btnSinaasappelsap
             // 
-            this.btnSinaasappelsap.Location = new System.Drawing.Point(346, 19);
+            this.btnSinaasappelsap.Location = new System.Drawing.Point(346, 279);
             this.btnSinaasappelsap.Name = "btnSinaasappelsap";
             this.btnSinaasappelsap.Size = new System.Drawing.Size(143, 90);
             this.btnSinaasappelsap.TabIndex = 3;
@@ -110,7 +110,7 @@
             // 
             // btnTonic
             // 
-            this.btnTonic.Location = new System.Drawing.Point(495, 19);
+            this.btnTonic.Location = new System.Drawing.Point(495, 279);
             this.btnTonic.Name = "btnTonic";
             this.btnTonic.Size = new System.Drawing.Size(143, 90);
             this.btnTonic.TabIndex = 3;
@@ -126,6 +126,7 @@
             this.btnVodka.TabIndex = 3;
             this.btnVodka.Text = "Vodka";
             this.btnVodka.UseVisualStyleBackColor = true;
+            this.btnVodka.Click += new System.EventHandler(this.btnVodka_Click);
             // 
             // btnMartini
             // 
@@ -135,6 +136,7 @@
             this.btnMartini.TabIndex = 3;
             this.btnMartini.Text = "Martini";
             this.btnMartini.UseVisualStyleBackColor = true;
+            this.btnMartini.Click += new System.EventHandler(this.btnMartini_Click);
             // 
             // btnGin
             // 
@@ -144,6 +146,7 @@
             this.btnGin.TabIndex = 3;
             this.btnGin.Text = "Gin";
             this.btnGin.UseVisualStyleBackColor = true;
+            this.btnGin.Click += new System.EventHandler(this.btnGin_Click);
             // 
             // btnTequilla
             // 
@@ -153,6 +156,7 @@
             this.btnTequilla.TabIndex = 3;
             this.btnTequilla.Text = "Tequilla";
             this.btnTequilla.UseVisualStyleBackColor = true;
+            this.btnTequilla.Click += new System.EventHandler(this.btnTequilla_Click);
             // 
             // btnRum
             // 
@@ -162,6 +166,7 @@
             this.btnRum.TabIndex = 3;
             this.btnRum.Text = "Rum";
             this.btnRum.UseVisualStyleBackColor = true;
+            this.btnRum.Click += new System.EventHandler(this.btnRum_Click);
             // 
             // btnPerzik
             // 
@@ -171,6 +176,7 @@
             this.btnPerzik.TabIndex = 3;
             this.btnPerzik.Text = "Peach Liquor ";
             this.btnPerzik.UseVisualStyleBackColor = true;
+            this.btnPerzik.Click += new System.EventHandler(this.btnPerzik_Click);
             // 
             // progressBar
             // 
@@ -178,10 +184,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.progressBar.Location = new System.Drawing.Point(40, 428);
+            this.progressBar.Location = new System.Drawing.Point(40, 472);
             this.progressBar.Maximum = 150;
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(656, 50);
+            this.progressBar.Size = new System.Drawing.Size(661, 51);
             this.progressBar.Step = 1;
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar.TabIndex = 4;
@@ -189,9 +195,9 @@
             // btnDone
             // 
             this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.Location = new System.Drawing.Point(718, 272);
+            this.btnDone.Location = new System.Drawing.Point(723, 288);
             this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(105, 50);
+            this.btnDone.Size = new System.Drawing.Size(182, 81);
             this.btnDone.TabIndex = 2;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
@@ -201,7 +207,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 490);
+            this.ClientSize = new System.Drawing.Size(917, 535);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.btnTequilla);
             this.Controls.Add(this.btnSinaasappelsap);
