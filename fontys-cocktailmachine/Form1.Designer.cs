@@ -43,12 +43,16 @@
             this.btnPerzik = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnDone = new System.Windows.Forms.Button();
+            this.gbNonAlcohol = new System.Windows.Forms.GroupBox();
+            this.gbAlcohol = new System.Windows.Forms.GroupBox();
+            this.gbNonAlcohol.SuspendLayout();
+            this.gbAlcohol.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
             // 
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(271, 115);
+            this.btnStart.Location = new System.Drawing.Point(272, 135);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(283, 111);
             this.btnStart.TabIndex = 0;
@@ -59,7 +63,7 @@
             // btnNonAlcohol
             // 
             this.btnNonAlcohol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNonAlcohol.Location = new System.Drawing.Point(91, 126);
+            this.btnNonAlcohol.Location = new System.Drawing.Point(92, 152);
             this.btnNonAlcohol.Name = "btnNonAlcohol";
             this.btnNonAlcohol.Size = new System.Drawing.Size(174, 88);
             this.btnNonAlcohol.TabIndex = 1;
@@ -70,7 +74,7 @@
             // btnAlcohol
             // 
             this.btnAlcohol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlcohol.Location = new System.Drawing.Point(560, 129);
+            this.btnAlcohol.Location = new System.Drawing.Point(561, 155);
             this.btnAlcohol.Name = "btnAlcohol";
             this.btnAlcohol.Size = new System.Drawing.Size(174, 88);
             this.btnAlcohol.TabIndex = 1;
@@ -90,7 +94,7 @@
             // 
             // btnCola
             // 
-            this.btnCola.Location = new System.Drawing.Point(197, 279);
+            this.btnCola.Location = new System.Drawing.Point(6, 21);
             this.btnCola.Name = "btnCola";
             this.btnCola.Size = new System.Drawing.Size(143, 90);
             this.btnCola.TabIndex = 3;
@@ -100,7 +104,7 @@
             // 
             // btnSinaasappelsap
             // 
-            this.btnSinaasappelsap.Location = new System.Drawing.Point(346, 279);
+            this.btnSinaasappelsap.Location = new System.Drawing.Point(155, 21);
             this.btnSinaasappelsap.Name = "btnSinaasappelsap";
             this.btnSinaasappelsap.Size = new System.Drawing.Size(143, 90);
             this.btnSinaasappelsap.TabIndex = 3;
@@ -110,7 +114,7 @@
             // 
             // btnTonic
             // 
-            this.btnTonic.Location = new System.Drawing.Point(495, 279);
+            this.btnTonic.Location = new System.Drawing.Point(304, 21);
             this.btnTonic.Name = "btnTonic";
             this.btnTonic.Size = new System.Drawing.Size(143, 90);
             this.btnTonic.TabIndex = 3;
@@ -120,7 +124,7 @@
             // 
             // btnVodka
             // 
-            this.btnVodka.Location = new System.Drawing.Point(346, 232);
+            this.btnVodka.Location = new System.Drawing.Point(152, 20);
             this.btnVodka.Name = "btnVodka";
             this.btnVodka.Size = new System.Drawing.Size(143, 90);
             this.btnVodka.TabIndex = 3;
@@ -130,7 +134,7 @@
             // 
             // btnMartini
             // 
-            this.btnMartini.Location = new System.Drawing.Point(346, 328);
+            this.btnMartini.Location = new System.Drawing.Point(152, 116);
             this.btnMartini.Name = "btnMartini";
             this.btnMartini.Size = new System.Drawing.Size(143, 90);
             this.btnMartini.TabIndex = 3;
@@ -140,7 +144,7 @@
             // 
             // btnGin
             // 
-            this.btnGin.Location = new System.Drawing.Point(495, 232);
+            this.btnGin.Location = new System.Drawing.Point(301, 20);
             this.btnGin.Name = "btnGin";
             this.btnGin.Size = new System.Drawing.Size(143, 90);
             this.btnGin.TabIndex = 3;
@@ -150,7 +154,7 @@
             // 
             // btnTequilla
             // 
-            this.btnTequilla.Location = new System.Drawing.Point(495, 328);
+            this.btnTequilla.Location = new System.Drawing.Point(301, 116);
             this.btnTequilla.Name = "btnTequilla";
             this.btnTequilla.Size = new System.Drawing.Size(143, 90);
             this.btnTequilla.TabIndex = 3;
@@ -160,7 +164,7 @@
             // 
             // btnRum
             // 
-            this.btnRum.Location = new System.Drawing.Point(197, 232);
+            this.btnRum.Location = new System.Drawing.Point(3, 20);
             this.btnRum.Name = "btnRum";
             this.btnRum.Size = new System.Drawing.Size(143, 90);
             this.btnRum.TabIndex = 3;
@@ -170,7 +174,7 @@
             // 
             // btnPerzik
             // 
-            this.btnPerzik.Location = new System.Drawing.Point(197, 328);
+            this.btnPerzik.Location = new System.Drawing.Point(3, 116);
             this.btnPerzik.Name = "btnPerzik";
             this.btnPerzik.Size = new System.Drawing.Size(143, 90);
             this.btnPerzik.TabIndex = 3;
@@ -203,21 +207,40 @@
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // gbNonAlcohol
+            // 
+            this.gbNonAlcohol.Controls.Add(this.btnTonic);
+            this.gbNonAlcohol.Controls.Add(this.btnCola);
+            this.gbNonAlcohol.Controls.Add(this.btnSinaasappelsap);
+            this.gbNonAlcohol.Location = new System.Drawing.Point(197, 6);
+            this.gbNonAlcohol.Name = "gbNonAlcohol";
+            this.gbNonAlcohol.Size = new System.Drawing.Size(456, 123);
+            this.gbNonAlcohol.TabIndex = 5;
+            this.gbNonAlcohol.TabStop = false;
+            this.gbNonAlcohol.Text = " ";
+            // 
+            // gbAlcohol
+            // 
+            this.gbAlcohol.Controls.Add(this.btnGin);
+            this.gbAlcohol.Controls.Add(this.btnVodka);
+            this.gbAlcohol.Controls.Add(this.btnRum);
+            this.gbAlcohol.Controls.Add(this.btnTequilla);
+            this.gbAlcohol.Controls.Add(this.btnMartini);
+            this.gbAlcohol.Controls.Add(this.btnPerzik);
+            this.gbAlcohol.Location = new System.Drawing.Point(203, 249);
+            this.gbAlcohol.Name = "gbAlcohol";
+            this.gbAlcohol.Size = new System.Drawing.Size(450, 217);
+            this.gbAlcohol.TabIndex = 6;
+            this.gbAlcohol.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 535);
+            this.Controls.Add(this.gbAlcohol);
+            this.Controls.Add(this.gbNonAlcohol);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.btnTequilla);
-            this.Controls.Add(this.btnSinaasappelsap);
-            this.Controls.Add(this.btnGin);
-            this.Controls.Add(this.btnPerzik);
-            this.Controls.Add(this.btnMartini);
-            this.Controls.Add(this.btnTonic);
-            this.Controls.Add(this.btnRum);
-            this.Controls.Add(this.btnVodka);
-            this.Controls.Add(this.btnCola);
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAlcohol);
@@ -225,6 +248,8 @@
             this.Controls.Add(this.btnStart);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.gbNonAlcohol.ResumeLayout(false);
+            this.gbAlcohol.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -246,6 +271,8 @@
         private System.Windows.Forms.Button btnPerzik;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button btnDone;
+        private System.Windows.Forms.GroupBox gbNonAlcohol;
+        private System.Windows.Forms.GroupBox gbAlcohol;
     }
 }
 

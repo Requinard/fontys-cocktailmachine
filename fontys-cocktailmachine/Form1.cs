@@ -12,29 +12,20 @@ namespace fontys_cocktailmachine
 {
     public partial class Form1 : Form
     {
-        List<int> customRecept;
+        List<char> customRecept;
         public Form1()
         {
             InitializeComponent();
-            customRecept = new List<int>();
+            customRecept = new List<char>();
             btnStart.Visible = true;
             btnDone.Visible = false;
             btnBack.Visible = true;
 
             btnAlcohol.Visible = false;
             btnNonAlcohol.Visible = false;
-                        
-            btnSinaasappelsap.Visible = false;
-            btnCola.Visible = false;
-            btnTonic.Visible = false;
 
-            btnVodka.Visible = false;
-            btnGin.Visible = false;
-            btnMartini.Visible = false;
-            btnTequilla.Visible = false;
-            btnRum.Visible = false;
-            btnPerzik.Visible = false;
-
+            gbNonAlcohol.Visible = false;
+            gbAlcohol.Visible = false;
             
         }
         private void fill()
@@ -50,7 +41,7 @@ namespace fontys_cocktailmachine
             btnDone.Visible = true;
             if (progressBar.Value == 150)
             {
-                klaar();
+                orderComplete();
             }
         }
         
@@ -60,16 +51,9 @@ namespace fontys_cocktailmachine
             btnAlcohol.Visible = false;
             btnNonAlcohol.Visible = false;
             btnBack.Visible = true;
-            btnSinaasappelsap.Visible = false;
-            btnCola.Visible = false;
-            btnTonic.Visible = false;
 
-            btnVodka.Visible = false;
-            btnGin.Visible = false;
-            btnMartini.Visible = false;
-            btnTequilla.Visible = false;
-            btnRum.Visible = false;
-            btnPerzik.Visible = false;
+            gbNonAlcohol.Visible = false;
+            gbAlcohol.Visible = false;
             progressBar.Value = 0;
 
 
@@ -83,17 +67,9 @@ namespace fontys_cocktailmachine
             btnNonAlcohol.Enabled = true;
             btnStart.Visible = false;
             btnBack.Visible = true;
-            btnSinaasappelsap.Visible = false;
-            btnCola.Visible = false;
-            btnTonic.Visible = false;
 
-            btnVodka.Visible = false;
-            btnGin.Visible = false;
-            btnMartini.Visible = false;
-            btnTequilla.Visible = false;
-            btnRum.Visible = false;
-            btnPerzik.Visible = false;
-            
+            gbNonAlcohol.Visible = false;
+            gbAlcohol.Visible = false;
             
             progressBar.Visible = true;
 
@@ -120,111 +96,95 @@ namespace fontys_cocktailmachine
         private void btnNonAlcohol_Click(object sender, EventArgs e)
         {
             btnNonAlcohol.Enabled = false;
-            btnSinaasappelsap.Visible = true;
-            btnCola.Visible = true;
-            btnTonic.Visible = true;
+            gbNonAlcohol.Visible = true;
 
             btnAlcohol.Enabled = true;
-            btnVodka.Visible = false;
-            btnGin.Visible = false;
-            btnMartini.Visible = false;
-            btnTequilla.Visible = false;
-            btnRum.Visible = false;
-            btnPerzik.Visible = false;
+            gbAlcohol.Visible = false;
 
         }
 
         private void btnAlcohol_Click(object sender, EventArgs e)
         {
-            btnAlcohol.Enabled = false;
-            btnVodka.Visible = true;
-            btnGin.Visible = true;
-            btnMartini.Visible = true;
-            btnTequilla.Visible = true;
-            btnRum.Visible = true;
-            btnPerzik.Visible = true;
-
             btnNonAlcohol.Enabled = true;
-            btnSinaasappelsap.Visible = false;
-            btnCola.Visible = false;
-            btnTonic.Visible = false;
-            
+            gbNonAlcohol.Visible = false;
+
+            btnAlcohol.Enabled = false;
+            gbAlcohol.Visible = true;
            }
 
-
-
-
-        private void klaar()
+        public void arduinoCode(int nozzle)
         {
-            MessageBox.Show("//code naar arduino");
-            //code naar arduino
+            //code arduino
 
         }
 
+
+        private void orderComplete()
+        {
+            while (customRecept.Count() < 6)
+                {
+                    customRecept.Add((char)90);
+                }
+            
+            for (int i = 0; i < customRecept.Count(); i++)
+                {
+                   int nozzle = customRecept[i];
+                   arduinoCode(nozzle);
+                }
+        }
+
         private void btnCola_Click(object sender, EventArgs e)
-        { 
-            customRecept.Add(0);
+        {
+            customRecept.Add((char)65);
             fill();
         }
 
         private void btnSinaasappelsap_Click(object sender, EventArgs e)
         {
-            customRecept.Add(1);
+            customRecept.Add((char)66);
             fill();
         }
 
         private void btnTonic_Click(object sender, EventArgs e)
         {
-            customRecept.Add(2);
+            customRecept.Add((char)67);
             fill();
         }
 
         private void btnRum_Click(object sender, EventArgs e)
         {
-            customRecept.Add(3);
+            customRecept.Add((char)68);
             fill();
         }
 
         private void btnVodka_Click(object sender, EventArgs e)
         {
-            customRecept.Add(4);
+            customRecept.Add((char)69);
             fill();
         }
 
         private void btnGin_Click(object sender, EventArgs e)
         {
-            customRecept.Add(5);
+            customRecept.Add((char)70);
             fill();
         }
 
         private void btnPerzik_Click(object sender, EventArgs e)
         {
-            customRecept.Add(6);
+            customRecept.Add((char)71);
             fill();
         }
 
         private void btnMartini_Click(object sender, EventArgs e)
         {
-            customRecept.Add(7);
+            customRecept.Add((char)72);
             fill();
         }
 
         private void btnTequilla_Click(object sender, EventArgs e)
         {
-            customRecept.Add(8);
+            customRecept.Add((char)73);
             fill();
         }
-
-
-
-        
-
-
-
-
-
-
-
-
      }
 }
