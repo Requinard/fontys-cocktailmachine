@@ -7,18 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using 
 
 namespace fontys_cocktailmachine
 {
     public partial class Form1 : Form
     {
-        List<char> customRecept;
+        private List<char> customRecept;
+        public DBConnection Database;
         public Form1()
         {
             InitializeComponent();
 
-            InitializeSerialPort();
+            //InitializeSerialPort();
+
+            InitializeDatabase();
         }
 
         private void InitializeSerialPort()
@@ -42,7 +44,10 @@ namespace fontys_cocktailmachine
 
         private void InitializeDatabase()
         {
-            
+            Database = new DBConnection();
+            Database.DatabaseName = "fontys";
+            Database.Password = "proftaak";
+            Database.IsConnect();
         }
         private void fill()
         {

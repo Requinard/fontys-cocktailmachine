@@ -11,8 +11,7 @@ namespace fontys_cocktailmachine
 {
     public class DBConnection
     {
-
-        private DBConnection() { }
+        public DBConnection() { }
         private string databaseName = string.Empty;
         public string DatabaseName
         {
@@ -37,7 +36,7 @@ namespace fontys_cocktailmachine
             {
                 if (databaseName == string.Empty)
                     result = false;
-                string StrCon = string.Format("Server=localhost; database={0}; UID=UserName; password=your password", databaseName);
+                string StrCon = string.Format("server=188.165.195.75;database=fontys;uid=fontys;pwd=proftaak");
                 Connection = new MySqlConnection(StrCon);
                 Connection.Open();
                 result = true;
