@@ -38,10 +38,10 @@ namespace fontys_cocktailmachine
             MessageBox.Show("You fucked up bro");
             string lol = "henk";
             toArduino(lol);
-                       
+        }
 
-
-
+        private void InitializeDatabase()
+        {
             
         }
         private void fill()
