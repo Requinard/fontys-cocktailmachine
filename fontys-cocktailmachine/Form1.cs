@@ -12,13 +12,14 @@ namespace fontys_cocktailmachine
 {
     public partial class Form1 : Form
     {
-        private List<char> customRecept;
+        private List<char> eigenRecept;
         public DBConnection Database;
+
         public Form1()
         {
             InitializeComponent();
 
-            //InitializeSerialPort();
+            InitializeSerialPort();
 
             InitializeDatabase();
         }
@@ -31,15 +32,13 @@ namespace fontys_cocktailmachine
                 serialPort.PortName = port;
                 serialPort.Open();
                 string response = serialPort.ReadLine();
-                if (response == "BOOZE")
+                if (response != null)
                 {
                     return;
                 }
                 serialPort.Close();
             }
-            MessageBox.Show("You fucked up bro");
-            string lol = "henk";
-            toArduino(lol);
+            MessageBox.Show("No Arduino Found");
         }
 
         private void InitializeDatabase()
@@ -49,7 +48,8 @@ namespace fontys_cocktailmachine
             Database.Password = "proftaak";
             Database.IsConnect();
         }
-        private void fill()
+
+        private void fillAllotedAmountBar()
         {
             if (progressBar.Value + 25 <= 150)
             {
@@ -66,7 +66,7 @@ namespace fontys_cocktailmachine
             }
         }
         
-        private void homeScreen()
+        private void setUpHomeScreen()
             {
             btnStart.Visible = true;
             btnAlcohol.Visible = false;
@@ -107,7 +107,7 @@ namespace fontys_cocktailmachine
             }
             if (btnAlcohol.Visible && btnNonAlcohol.Visible)
             {
-                homeScreen();
+                setUpHomeScreen();
                 btnBack.Text = "Back";
             }
             if (btnAlcohol.Enabled == false || btnNonAlcohol.Enabled == false)
@@ -145,70 +145,70 @@ namespace fontys_cocktailmachine
 
         private void orderComplete()
         {
-            while (customRecept.Count() < 6)
+            while (eigenRecept.Count() < 6)
                 {
-                    customRecept.Add((char)90);
+                    eigenRecept.Add((char)90);
                 }
             
-            for (int i = 0; i < customRecept.Count(); i++)
+            for (int i = 0; i < eigenRecept.Count(); i++)
                 {
-                   int nozzle = customRecept[i];
+                   int nozzle = eigenRecept[i];
                    arduinoCode(nozzle);
                 }
         }
 
         private void btnCola_Click(object sender, EventArgs e)
         {
-            customRecept.Add((char)65);
-            fill();
+            eigenRecept.Add((char)65);
+            fillAllotedAmountBar();
         }
 
         private void btnSinaasappelsap_Click(object sender, EventArgs e)
         {
-            customRecept.Add((char)66);
-            fill();
+            eigenRecept.Add((char)66);
+            fillAllotedAmountBar();
         }
 
         private void btnTonic_Click(object sender, EventArgs e)
         {
-            customRecept.Add((char)67);
-            fill();
+            eigenRecept.Add((char)67);
+            fillAllotedAmountBar();
         }
 
         private void btnRum_Click(object sender, EventArgs e)
         {
-            customRecept.Add((char)68);
-            fill();
+            eigenRecept.Add((char)68);
+            fillAllotedAmountBar();
         }
 
         private void btnVodka_Click(object sender, EventArgs e)
         {
-            customRecept.Add((char)69);
-            fill();
+            eigenRecept.Add((char)69);
+            fillAllotedAmountBar();
         }
 
         private void btnGin_Click(object sender, EventArgs e)
         {
-            customRecept.Add((char)70);
-            fill();
+            eigenRecept.Add((char)70);
+            fillAllotedAmountBar();
         }
 
         private void btnPerzik_Click(object sender, EventArgs e)
         {
-            customRecept.Add((char)71);
-            fill();
+            eigenRecept.Add((char)71);
+            fillAllotedAmountBar();
         }
 
         private void btnMartini_Click(object sender, EventArgs e)
         {
-            customRecept.Add((char)72);
-            fill();
+            eigenRecept.Add((char)72);
+            fillAllotedAmountBar();
         }
 
         private void btnTequilla_Click(object sender, EventArgs e)
         {
-            customRecept.Add((char)73);
-            fill();
+            eigenRecept.Add((char)73);
+            fillAllotedAmountBar();
         }
 
         private void toArduino(string input)
