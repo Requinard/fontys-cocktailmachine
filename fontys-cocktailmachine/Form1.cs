@@ -16,16 +16,31 @@ namespace fontys_cocktailmachine
         public Form1()
         {
             InitializeComponent();
-            customRecept = new List<char>();
-            btnStart.Visible = true;
-            btnDone.Visible = false;
-            btnBack.Visible = true;
 
-            btnAlcohol.Visible = false;
-            btnNonAlcohol.Visible = false;
+            InitializeSerialPort();
+        }
 
-            gbNonAlcohol.Visible = false;
-            gbAlcohol.Visible = false;
+        private void InitializeSerialPort()
+        {
+            string[] availablePort = System.IO.Ports.SerialPort.GetPortNames();
+            foreach (string port in availablePort)
+            {
+                serialPort.PortName = port;
+                serialPort.Open();
+                string response = serialPort.ReadLine();
+                if (response == "BOOZE")
+                {
+                    return;
+                }
+                serialPort.Close();
+            }
+            MessageBox.Show("You fucked up bro");
+            string lol = "henk";
+            toArduino(lol);
+                       
+
+
+
             
         }
         private void fill()
@@ -54,11 +69,12 @@ namespace fontys_cocktailmachine
 
             gbNonAlcohol.Visible = false;
             gbAlcohol.Visible = false;
+            progressBar.Visible = false;
             progressBar.Value = 0;
-
-
-
     }
+
+
+
         private void btnStart_Click(object sender, EventArgs e)
         {
             btnAlcohol.Visible = true;
@@ -67,6 +83,7 @@ namespace fontys_cocktailmachine
             btnNonAlcohol.Enabled = true;
             btnStart.Visible = false;
             btnBack.Visible = true;
+            btnBack.Text = "Back";
 
             gbNonAlcohol.Visible = false;
             gbAlcohol.Visible = false;
@@ -85,6 +102,7 @@ namespace fontys_cocktailmachine
             if (btnAlcohol.Visible && btnNonAlcohol.Visible)
             {
                 homeScreen();
+                btnBack.Text = "Back";
             }
             if (btnAlcohol.Enabled == false || btnNonAlcohol.Enabled == false)
             {
@@ -185,6 +203,23 @@ namespace fontys_cocktailmachine
         {
             customRecept.Add((char)73);
             fill();
+        }
+
+        private void toArduino(string input)
+        {
+            try
+            {
+                serialPort.WriteLine(input);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Arduino not connected, ERROR253. Call Company");
+            }
+        }
+
+        private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+
         }
      }
 }

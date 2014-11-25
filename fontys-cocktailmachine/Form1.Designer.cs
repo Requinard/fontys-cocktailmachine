@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnNonAlcohol = new System.Windows.Forms.Button();
             this.btnAlcohol = new System.Windows.Forms.Button();
@@ -45,6 +46,7 @@
             this.btnDone = new System.Windows.Forms.Button();
             this.gbNonAlcohol = new System.Windows.Forms.GroupBox();
             this.gbAlcohol = new System.Windows.Forms.GroupBox();
+            this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.gbNonAlcohol.SuspendLayout();
             this.gbAlcohol.SuspendLayout();
             this.SuspendLayout();
@@ -212,9 +214,9 @@
             this.gbNonAlcohol.Controls.Add(this.btnTonic);
             this.gbNonAlcohol.Controls.Add(this.btnCola);
             this.gbNonAlcohol.Controls.Add(this.btnSinaasappelsap);
-            this.gbNonAlcohol.Location = new System.Drawing.Point(197, 6);
+            this.gbNonAlcohol.Location = new System.Drawing.Point(203, 252);
             this.gbNonAlcohol.Name = "gbNonAlcohol";
-            this.gbNonAlcohol.Size = new System.Drawing.Size(456, 123);
+            this.gbNonAlcohol.Size = new System.Drawing.Size(450, 123);
             this.gbNonAlcohol.TabIndex = 5;
             this.gbNonAlcohol.TabStop = false;
             this.gbNonAlcohol.Text = " ";
@@ -232,6 +234,10 @@
             this.gbAlcohol.Size = new System.Drawing.Size(450, 217);
             this.gbAlcohol.TabIndex = 6;
             this.gbAlcohol.TabStop = false;
+            // 
+            // serialPort
+            // 
+            this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
             // Form1
             // 
@@ -273,6 +279,7 @@
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.GroupBox gbNonAlcohol;
         private System.Windows.Forms.GroupBox gbAlcohol;
+        private System.IO.Ports.SerialPort serialPort;
     }
 }
 
