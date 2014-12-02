@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace fontys_cocktailmachine
 {
-    class Items
+    class Ingredient
     {
         private string _name;
         private string _id;
 
-        public Items(string name, string id)
+        public Ingredient(string name, string id)
         {
             _name = name;
             _id = id;
