@@ -9,7 +9,7 @@ using Microsoft.SqlServer.Server;
 
 namespace fontys_cocktailmachine
 {
-    internal class Recipe
+    public class Recipe
     {
         private string _name;
         private int _id;
@@ -28,7 +28,7 @@ namespace fontys_cocktailmachine
 
         public Dictionary<Ingredient, int> Ingredients
         {
-            get { return ingredients; }
+            get { return _ingredients; }
         }
 
         public int Id
@@ -42,7 +42,7 @@ namespace fontys_cocktailmachine
 
             foreach (DataRow dataRow in rows)
             {
-                _ingredients[new Ingredient("test", 1)] = dataRow[1];
+                
             }
         }
     }

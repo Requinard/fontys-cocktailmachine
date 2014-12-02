@@ -20,10 +20,13 @@ namespace fontys_cocktailmachine
             _connection = new MySqlConnection(connString);
 
             _connection.Open();
-
-            GetRecipeIngredients(1);
         }
 
+        /// <summary>
+        /// Queries a database for specific queries
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public DataSet QueryDatabase(string query)
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, _connection);
@@ -34,6 +37,10 @@ namespace fontys_cocktailmachine
             return ds;
         }
 
+        /// <summary>
+        /// Returns a dataset that contains all ingredients
+        /// </summary>
+        /// <returns></returns>
         public DataRowCollection GetAllIngredients()
         {
             DataSet ds = QueryDatabase("SELECT * FROM ingredients");
@@ -54,6 +61,25 @@ namespace fontys_cocktailmachine
             DataSet ds = QueryDatabase(query);
 
             return ds.Tables[0].Rows;
+        }
+
+        /// <summary>
+        /// Pulls all ingredients from the Database and dumps them into a list of ingredients
+        /// </summary>
+        /// <returns>List of ingredient objects</returns>
+        public List<Ingredient> CreateIngredientList()
+        {
+            List<Ingredient> _ingredients = new List<Ingredient>();
+
+            DataRowCollection rows = GetAllIngredients();
+
+            foreach (DataRow dataRow in rows)
+            {
+                Ingredient ing = new Ingredient((string)dataRow[1], (int)dataRow[0]);
+                _ingredients.Add(ing);
+            }
+
+            return _ingredients;
         }
     }
 }
