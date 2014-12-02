@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace fontys_cocktailmachine
 {
     public partial class Form1 : Form
     {
-        
+        private List<char> eigenRecept;
+        private DataBase _connection;
+
         public Form1()
         {
             InitializeComponent();
             InitializeSerialPort();
             HomeScreen();
           
-        }
 
-        
+            InitializeDatabase();
+        }
 
         private void InitializeSerialPort()
         {
@@ -31,30 +35,34 @@ namespace fontys_cocktailmachine
                 serialPort.PortName = port;
                 serialPort.Open();
                 string response = serialPort.ReadLine();
-                if (response == "BOOZE")
+                if (response != null)
                 {
                     return;
                 }
                 serialPort.Close();
             }
-            MessageBox.Show("You fucked up bro");
-            string lol = "henk";
-            toArduino(lol);
-                       
+            MessageBox.Show("No Arduino Found");
         }
-
-        private void HomeScreen()
+                       
+        private void InitializeDatabase()
         {
-            btnStart.Visible = true;
-
+            _connection = new DataBase();
+            DataSet ds = _connection.QueryDatabase("SELECT * FROM ingredients");
+            
         }
         
+        private void HomeScreen()
+            {
+            btnStart.Visible = true;
+
+    }
+
         private void btnStart_Click(object sender, EventArgs e)
         {
 
         }
 
-
+            
 
         private void toArduino(string dinges)
         {
@@ -68,11 +76,11 @@ namespace fontys_cocktailmachine
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            {
             string selectedIndex = listBox1.SelectedItem.ToString();
             MessageBox.Show(selectedIndex);
         }
 
-        
+
+        }
      }
-}
