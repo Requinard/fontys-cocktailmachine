@@ -17,14 +17,18 @@ namespace fontys_cocktailmachine
         private List<char> eigenRecept;
         private DataBase _connection;
 
+        private List<Ingredient> _ingredients;
+        private List<Recipe> _recipes; 
+
         public Form1()
         {
             InitializeComponent();
             InitializeSerialPort();
-            HomeScreen();
-          
-
             InitializeDatabase();
+
+            _ingredients = _connection.CreateIngredientList();
+            _recipes = _connection.CreateRecipeList(_ingredients);
+            HomeScreen();
         }
 
         private void InitializeSerialPort()
@@ -47,7 +51,6 @@ namespace fontys_cocktailmachine
         private void InitializeDatabase()
         {
             _connection = new DataBase();
-            DataSet ds = _connection.QueryDatabase("SELECT * FROM ingredients");
             
         }
         
