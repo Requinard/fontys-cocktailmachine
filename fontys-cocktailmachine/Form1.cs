@@ -104,7 +104,9 @@ namespace fontys_cocktailmachine
 
         private void lbDrinks_DoubleClick(object sender, EventArgs e)
         {
-
+            int index = lbDrinks.SelectedIndex;
+            eigenRecept.Add(Convert.ToChar(index));
+            
         }
 
        
