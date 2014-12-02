@@ -57,20 +57,47 @@ namespace fontys_cocktailmachine
         private void HomeScreen()
             {
             btnStart.Visible = true;
+            lbDrinks.Visible = false;
+            lbIngr.Visible = false;
+            btnBack.Text = "Exit";
+            btnBack.Visible = true;
+            btnDone.Visible = false;
+            
 
     }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            btnStart.Visible = false;
+            lbDrinks.Visible = true;
+            lbIngr.Visible = true;
+            btnBack.Text = "Back";
+            btnBack.Visible = true;
+            btnDone.Visible = false;
+            eigenRecept = new List<char>();
+
+
 
         }
-
-            
-
-        private void toArduino(string dinges)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Lost arduino Connection, ERROR 4y2i4.dll is missing.");
-        }
+
+        if      (btnBack.Text == "Back")
+            {
+                HomeScreen();
+            }
+        else if (btnBack.Text == "Exit")
+            {
+                Close();
+            }
+        } 
+
+
+
+        //private void toArduino(string dinges)
+        //{
+        //    MessageBox.Show("Lost arduino Connection, ERROR 4y2i4.dll is missing.");
+        //}
 
 
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
@@ -78,11 +105,14 @@ namespace fontys_cocktailmachine
 
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-            {
-            string selectedIndex = listBox1.SelectedItem.ToString();
-            MessageBox.Show(selectedIndex);
+        private void lbDrinks_DoubleClick(object sender, EventArgs e)
+        {
+
         }
+
+       
+
+        
 
 
         }
