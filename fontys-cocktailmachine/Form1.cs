@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace fontys_cocktailmachine
 {
     public partial class Form1 : Form
     {
         private List<char> eigenRecept;
-        public DBConnection Database;
+        private DataBase _connection;
 
         public Form1()
         {
@@ -43,10 +45,9 @@ namespace fontys_cocktailmachine
 
         private void InitializeDatabase()
         {
-            Database = new DBConnection();
-            Database.DatabaseName = "fontys";
-            Database.Password = "proftaak";
-            Database.IsConnect();
+            _connection = new DataBase();
+            DataSet ds = _connection.QueryDatabase("SELECT * FROM ingredients");
+            
         }
 
         private void fillAllotedAmountBar()

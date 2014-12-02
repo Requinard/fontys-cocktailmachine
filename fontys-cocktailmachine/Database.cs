@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,54 +10,26 @@ using MySql.Data.MySqlClient;
 
 namespace fontys_cocktailmachine
 {
-    public class DBConnection
+    public class DataBase
     {
-        public DBConnection() { }
-        private string databaseName = string.Empty;
-        public string DatabaseName
-        {
-            get { return databaseName; }
-            set { databaseName = value; }
-        }
-        public string Password { get; set; }
-        private MySqlConnection Connection = null;
-        private static DBConnection _instance = null;
-        public static DBConnection Instance()
-        {
-            if (_instance == null)
-                _instance = new DBConnection();
-            return _instance;
+        private MySqlConnection _connection;
+        const string connString = "SERVER=terarion.com;PORT=3306;DATABASE=fontys;UID=fontys;PASSWORD=proftaak;";
 
+        public DataBase()
+        {
+            _connection = new MySqlConnection(connString);
+
+            _connection.Open();
         }
 
-        public bool IsConnect()
+        public DataSet QueryDatabase(string query)
         {
-            bool result = true;
-            if (Connection == null)
-            {
-                if (databaseName == string.Empty)
-                    result = false;
-                string StrCon = string.Format("server=188.165.195.75;database=fontys;uid=fontys;pwd=proftaak");
-                Connection = new MySqlConnection(StrCon);
-                Connection.Open();
-                result = true;
-            }
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, _connection);
+            DataSet ds = new DataSet();
 
-            return result;
+            adapter.Fill(ds);
+
+            return ds;
         }
-
-        public MySqlConnection GetConnection()
-        {
-            return Connection;
-        }
-
-
-
-        public void Close()
-        {
-            Connection.Close();
-        }
-
-
     }
 }
