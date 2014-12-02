@@ -19,6 +19,8 @@ namespace fontys_cocktailmachine
         {
             _name = name;
             _id = id;
+
+            _ingredients = new Dictionary<Ingredient, int>();
         }
 
         public string Name
@@ -36,14 +38,9 @@ namespace fontys_cocktailmachine
             get { return _id; }
         }
 
-        public void PopulateIngredients(DataBase database)
+        public void AddIngredient(Ingredient ingredient, int amount)
         {
-            DataRowCollection rows = database.GetRecipeIngredients(_id);
-
-            foreach (DataRow dataRow in rows)
-            {
-                
-            }
+            _ingredients[ingredient] = amount;
         }
     }
 }

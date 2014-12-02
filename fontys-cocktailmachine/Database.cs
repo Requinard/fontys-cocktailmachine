@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySql;
 using MySql.Data;
 using MySql.Data.MySqlClient;
@@ -80,6 +81,28 @@ namespace fontys_cocktailmachine
             }
 
             return _ingredients;
+        }
+
+        public List<Recipe> CreateRecipeList(List<Ingredient> ingredients)
+        {
+            List<Recipe> _recipes = new List<Recipe>();
+
+            DataRowCollection rows = GetAllRecipeNames();
+
+            foreach (DataRow dataRow in rows)
+            {
+                Recipe rec = new Recipe((string) dataRow[1], (int) dataRow[0]);
+
+                foreach (DataRow recipeIngredient in GetRecipeIngredients(rec.Id))
+                {
+                    Ingredient ingredient = ingredients[(int) recipeIngredient[3] - 1];
+                    rec.AddIngredient(ingredient, (int) recipeIngredient[1]);
+                }
+
+                _recipes.Add(rec);
+            }
+
+            return _recipes;
         }
     }
 }
