@@ -28,7 +28,7 @@ namespace fontys_cocktailmachine
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public DataSet QueryDatabase(string query)
+        private DataSet QueryDatabase(string query)
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, _connection);
             DataSet ds = new DataSet();
@@ -42,21 +42,21 @@ namespace fontys_cocktailmachine
         /// Returns a dataset that contains all ingredients
         /// </summary>
         /// <returns></returns>
-        public DataRowCollection GetAllIngredients()
+        private DataRowCollection GetAllIngredients()
         {
             DataSet ds = QueryDatabase("SELECT * FROM ingredients");
 
             return ds.Tables[0].Rows;
         }
 
-        public DataRowCollection GetAllRecipeNames()
+        private DataRowCollection GetAllRecipeNames()
         {
             DataSet ds = QueryDatabase("SELECT * FROM item");
 
             return ds.Tables[0].Rows;
         }
 
-        public DataRowCollection GetRecipeIngredients(int recipeID)
+        private DataRowCollection GetRecipeIngredients(int recipeID)
         {
             string query = String.Format("SELECT * FROM recipe where item = {0}", recipeID);
             DataSet ds = QueryDatabase(query);
