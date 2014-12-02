@@ -16,10 +16,12 @@ namespace fontys_cocktailmachine
         public Form1()
         {
             InitializeComponent();
-
             InitializeSerialPort();
+            HomeScreen();
           
         }
+
+        
 
         private void InitializeSerialPort()
         {
@@ -40,9 +42,19 @@ namespace fontys_cocktailmachine
             toArduino(lol);
                        
         }
+
+        private void HomeScreen()
+        {
+            btnStart.Visible = true;
+
+        }
         
-        
-      
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         private void toArduino(string dinges)
         {
@@ -60,5 +72,7 @@ namespace fontys_cocktailmachine
             string selectedIndex = listBox1.SelectedItem.ToString();
             MessageBox.Show(selectedIndex);
         }
+
+        
      }
 }

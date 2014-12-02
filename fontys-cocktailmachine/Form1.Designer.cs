@@ -40,17 +40,18 @@
             // btnStart
             // 
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(316, 53);
+            this.btnStart.Location = new System.Drawing.Point(363, 110);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(283, 111);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Boozelicious";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.btnBack.Location = new System.Drawing.Point(723, 12);
+            this.btnBack.Location = new System.Drawing.Point(732, 12);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(182, 81);
             this.btnBack.TabIndex = 2;
@@ -74,7 +75,7 @@
             // btnDone
             // 
             this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.Location = new System.Drawing.Point(723, 294);
+            this.btnDone.Location = new System.Drawing.Point(723, 259);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(182, 81);
             this.btnDone.TabIndex = 2;
@@ -100,11 +101,11 @@
             "[drank 4]",
             "[drank 5]",
             "[drank 6]"});
-            this.listBox1.Location = new System.Drawing.Point(128, 25);
+            this.listBox1.Location = new System.Drawing.Point(25, 12);
             this.listBox1.Name = "listBox1";
             this.listBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.listBox1.ScrollAlwaysVisible = true;
-            this.listBox1.Size = new System.Drawing.Size(488, 274);
+            this.listBox1.Size = new System.Drawing.Size(535, 328);
             this.listBox1.TabIndex = 5;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
