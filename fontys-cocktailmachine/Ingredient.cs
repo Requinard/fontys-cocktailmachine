@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace fontys_cocktailmachine
+﻿namespace fontys_cocktailmachine
 {
     public class Ingredient
     {
-        private string _name;
-        private int _id;
+        private readonly int _id;
+        private readonly string _name;
 
         public Ingredient(string name, int id)
         {

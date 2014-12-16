@@ -1,24 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO.Ports;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace fontys_cocktailmachine
 {
     public partial class Form1 : Form
     {
-        private List<char> eigenRecept;
         private DataBase _connection;
 
         private List<Ingredient> _ingredients;
         private List<Recipe> _recipes; 
+        private List<Ingredient> recipe;
 
         public Form1()
         {
@@ -57,7 +50,7 @@ namespace fontys_cocktailmachine
 
         private void InitializeSerialPort()
         {
-            string[] availablePort = System.IO.Ports.SerialPort.GetPortNames();
+            string[] availablePort = SerialPort.GetPortNames();
             foreach (string port in availablePort)
             {
                 serialPort.PortName = port;
@@ -75,7 +68,6 @@ namespace fontys_cocktailmachine
         private void InitializeDatabase()
         {
             _connection = new DataBase();
-            
         }
         
         private void HomeScreen()
@@ -86,8 +78,6 @@ namespace fontys_cocktailmachine
             btnBack.Text = "Exit";
             btnBack.Visible = true;
             btnDone.Visible = false;
-            
-
     }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -98,15 +88,12 @@ namespace fontys_cocktailmachine
             btnBack.Text = "Back";
             btnBack.Visible = true;
             btnDone.Visible = false;
-            eigenRecept = new List<char>();
-
-
-
+            recipe = new List<Ingredient>();
         }
+
         private void btnBack_Click(object sender, EventArgs e)
         {
-
-        if      (btnBack.Text == "Back")
+            if (btnBack.Text == "Back")
             {
                 HomeScreen();
             }
@@ -117,28 +104,42 @@ namespace fontys_cocktailmachine
         } 
 
 
-
         //private void toArduino(string dinges)
         //{
         //    MessageBox.Show("Lost arduino Connection, ERROR 4y2i4.dll is missing.");
         //}
 
 
-        private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-
         }
 
         private void lbDrinks_DoubleClick(object sender, EventArgs e)
         {
             
             
+        /// <summary>
+        /// Returns a string that can be passed to the arduino for interpretation
+        /// </summary>
+        /// <param name="prefix">The prefix character</param>
+        /// <param name="ingredient">Ingredient that needs execution</param>
+        /// <returns>String that needs to be passed to arduino</returns>
+        private string stringBuilder(char prefix, Ingredient ingredient)
+        {
+            return String.Format("{0}{1}", prefix, (char) ingredient.Id);
         }
 
-       
+        private void lbDrinks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Recipe selectedRecipe = _recipes[lbDrinks.SelectedIndex];
 
-        
-
-
+            foreach (Ingredient ingredient in selectedRecipe.Ingredients.Keys)
+            {
+                for (int i = 0; i != selectedRecipe.Ingredients[ingredient]; i++)
+                {
+                    recipe.Add(ingredient);
+                }
+            }
+        }
         }
      }
