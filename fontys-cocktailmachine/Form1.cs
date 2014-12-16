@@ -7,10 +7,9 @@ namespace fontys_cocktailmachine
 {
     public partial class Form1 : Form
     {
+        private readonly List<Ingredient> _ingredients;
+        private readonly List<Recipe> _recipes;
         private DataBase _connection;
-
-        private List<Ingredient> _ingredients;
-        private List<Recipe> _recipes;
         private List<Ingredient> recipe;
 
         public Form1()
@@ -21,8 +20,31 @@ namespace fontys_cocktailmachine
 
             _ingredients = _connection.CreateIngredientList();
             _recipes = _connection.CreateRecipeList(_ingredients);
+
+            initializeIngredientList();
+            initializeRecipeList();
+
             HomeScreen();
         }
+
+        private void initializeRecipeList()
+        {
+            lbDrinks.Items.Clear();
+            foreach (Recipe item in _recipes)
+            {
+                lbDrinks.Items.Add(item.Name);
+            }
+        }
+
+        private void initializeIngredientList()
+        {
+            lbIngr.Items.Clear();
+            foreach (Ingredient item in _ingredients)
+            {
+                lbIngr.Items.Add(item.Name);
+            }
+        }
+
 
         private void InitializeSerialPort()
         {
@@ -92,16 +114,14 @@ namespace fontys_cocktailmachine
 
         private void lbDrinks_DoubleClick(object sender, EventArgs e)
         {
-            int index = lbDrinks.SelectedIndex;
-            recipe.Add(_ingredients[index]);
+            /// <summary>
+            /// Returns a string that can be passed to the arduino for interpretation
+            /// </summary>
+            /// <param name="prefix">The prefix character</param>
+            /// <param name="ingredient">Ingredient that needs execution</param>
+            /// <returns>String that needs to be passed to arduino</returns>
         }
 
-        /// <summary>
-        /// Returns a string that can be passed to the arduino for interpretation
-        /// </summary>
-        /// <param name="prefix">The prefix character</param>
-        /// <param name="ingredient">Ingredient that needs execution</param>
-        /// <returns>String that needs to be passed to arduino</returns>
         private string stringBuilder(char prefix, Ingredient ingredient)
         {
             return String.Format("{0}{1}", prefix, (char) ingredient.Id);
