@@ -95,7 +95,7 @@ namespace fontys_cocktailmachine
         }
 
         /// <summary>
-        /// Returns a string that can be passed to the arduino for interpretation
+        ///     Returns a string that can be passed to the arduino for interpretation
         /// </summary>
         /// <param name="prefix">The prefix character</param>
         /// <param name="ingredient">Ingredient that needs execution</param>
@@ -129,24 +129,42 @@ namespace fontys_cocktailmachine
             {
                 string command = stringBuilder('x', ingredient);
 
-                serialWrite(command);
+                if (!serialWrite(command))
+                {
+                    this.Close();
+                    return;
+                }
             }
 
             recipe.Clear();
         }
 
-        // Will write to arduino and wait for acknowledge
-        private void serialWrite(string write)
+        /// <summary>
+        /// Send a string over the serial port and wait for acknowledge
+        /// </summary>
+        /// <param name="write">String that needs to be sent</param>
+        /// <returns>If it returns false, something went wrong during this application</returns>
+        private bool serialWrite(string write)
         {
             // Write to the serial port
-            serialPort.WriteLine(write);
-
-            // Wait until we get a response
-            while (true)
+            try
             {
-                if (serialPort.ReadLine().Contains("ack"))
-                    break;
+                serialPort.WriteLine(write);
+
+                // Wait for a response
+                while (true)
+                {
+                    if (serialPort.ReadLine().Contains("ack"))
+                        break;
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Somethign went wrong during arduino IO. Please reboot the application");
+                return false;
+            }
+
+            return true;
         }
     }
 }
