@@ -28,8 +28,32 @@ namespace fontys_cocktailmachine
 
             _ingredients = _connection.CreateIngredientList();
             _recipes = _connection.CreateRecipeList(_ingredients);
+
+            initializeIngredientList();
+            initializeRecipeList();
+
             HomeScreen();
         }
+
+        private void initializeRecipeList()
+        {
+            lbDrinks.Items.Clear();
+            foreach (var item in _recipes)
+            {
+                lbDrinks.Items.Add(item.Name);
+            }
+        }
+
+        private void initializeIngredientList()
+        {
+            lbIngr.Items.Clear();
+            foreach (var item in _ingredients)
+            {
+                lbIngr.Items.Add(item.Name);
+            }
+        }
+
+
 
         private void InitializeSerialPort()
         {
@@ -107,8 +131,7 @@ namespace fontys_cocktailmachine
 
         private void lbDrinks_DoubleClick(object sender, EventArgs e)
         {
-            int index = lbDrinks.SelectedIndex;
-            eigenRecept.Add(Convert.ToChar(index));
+            
             
         }
 
