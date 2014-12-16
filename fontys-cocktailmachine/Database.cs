@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql;
-using MySql.Data;
 using MySql.Data.MySqlClient;
 
 namespace fontys_cocktailmachine
 {
     public class DataBase
     {
-        private MySqlConnection _connection;
-        const string connString = "SERVER=terarion.com;PORT=3306;DATABASE=fontys;UID=fontys;PASSWORD=proftaak;";
+        private const string connString = "SERVER=terarion.com;PORT=3306;DATABASE=fontys;UID=fontys;PASSWORD=proftaak;";
+        private readonly MySqlConnection _connection;
 
         public DataBase()
         {
@@ -24,14 +18,14 @@ namespace fontys_cocktailmachine
         }
 
         /// <summary>
-        /// Queries a database for specific queries
+        ///     Queries a database for specific queries
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
         private DataSet QueryDatabase(string query)
         {
-            MySqlDataAdapter adapter = new MySqlDataAdapter(query, _connection);
-            DataSet ds = new DataSet();
+            var adapter = new MySqlDataAdapter(query, _connection);
+            var ds = new DataSet();
 
             adapter.Fill(ds);
 
@@ -39,7 +33,7 @@ namespace fontys_cocktailmachine
         }
 
         /// <summary>
-        /// Returns a dataset that contains all ingredients
+        ///     Returns a dataset that contains all ingredients
         /// </summary>
         /// <returns></returns>
         private DataRowCollection GetAllIngredients()
@@ -65,18 +59,18 @@ namespace fontys_cocktailmachine
         }
 
         /// <summary>
-        /// Pulls all ingredients from the Database and dumps them into a list of ingredients
+        ///     Pulls all ingredients from the Database and dumps them into a list of ingredients
         /// </summary>
         /// <returns>List of ingredient objects</returns>
         public List<Ingredient> CreateIngredientList()
         {
-            List<Ingredient> _ingredients = new List<Ingredient>();
+            var _ingredients = new List<Ingredient>();
 
             DataRowCollection rows = GetAllIngredients();
 
             foreach (DataRow dataRow in rows)
             {
-                Ingredient ing = new Ingredient((string)dataRow[1], (int)dataRow[0]);
+                var ing = new Ingredient((string) dataRow[1], (int) dataRow[0]);
                 _ingredients.Add(ing);
             }
 
@@ -85,13 +79,13 @@ namespace fontys_cocktailmachine
 
         public List<Recipe> CreateRecipeList(List<Ingredient> ingredients)
         {
-            List<Recipe> _recipes = new List<Recipe>();
+            var _recipes = new List<Recipe>();
 
             DataRowCollection rows = GetAllRecipeNames();
 
             foreach (DataRow dataRow in rows)
             {
-                Recipe rec = new Recipe((string) dataRow[1], (int) dataRow[0]);
+                var rec = new Recipe((string) dataRow[1], (int) dataRow[0]);
 
                 foreach (DataRow recipeIngredient in GetRecipeIngredients(rec.Id))
                 {

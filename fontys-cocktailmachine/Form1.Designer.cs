@@ -114,6 +114,7 @@
             this.lbDrinks.ScrollAlwaysVisible = true;
             this.lbDrinks.Size = new System.Drawing.Size(270, 224);
             this.lbDrinks.TabIndex = 5;
+            this.lbDrinks.SelectedIndexChanged += new System.EventHandler(this.lbDrinks_SelectedIndexChanged);
             this.lbDrinks.DoubleClick += new System.EventHandler(this.lbDrinks_DoubleClick);
             // 
             // lbIngr

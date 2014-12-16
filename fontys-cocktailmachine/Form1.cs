@@ -106,5 +106,18 @@ namespace fontys_cocktailmachine
         {
             return String.Format("{0}{1}", prefix, (char) ingredient.Id);
         }
+
+        private void lbDrinks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Recipe selectedRecipe = _recipes[lbDrinks.SelectedIndex];
+
+            foreach (Ingredient ingredient in selectedRecipe.Ingredients.Keys)
+            {
+                for (int i = 0; i != selectedRecipe.Ingredients[ingredient]; i++)
+                {
+                    recipe.Add(ingredient);
+                }
+            }
+        }
     }
 }

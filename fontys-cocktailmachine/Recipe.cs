@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SqlServer.Server;
+﻿using System.Collections.Generic;
 
 namespace fontys_cocktailmachine
 {
     public class Recipe
     {
-        private string _name;
-        private int _id;
-        private Dictionary<Ingredient, int> _ingredients; 
+        private readonly int _id;
+        private readonly Dictionary<Ingredient, int> _ingredients;
+        private readonly string _name;
 
         public Recipe(string name, int id)
         {
