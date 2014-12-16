@@ -53,14 +53,7 @@ namespace fontys_cocktailmachine
             {
                 serialPort.PortName = port;
                 serialPort.Open();
-                string response = serialPort.ReadLine();
-                if (response != null)
-                {
-                    return;
-                }
-                serialPort.Close();
             }
-            MessageBox.Show("No Arduino Found");
         }
 
         private void InitializeDatabase()
@@ -138,6 +131,8 @@ namespace fontys_cocktailmachine
 
                 serialWrite(command);
             }
+
+            recipe.Clear();
         }
 
         // Will write to arduino and wait for acknowledge
@@ -149,7 +144,7 @@ namespace fontys_cocktailmachine
             // Wait until we get a response
             while (true)
             {
-                if (serialPort.ReadLine() == "ack")
+                if (serialPort.ReadLine().Contains("ack"))
                     break;
             }
         }
