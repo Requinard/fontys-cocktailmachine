@@ -36,14 +36,13 @@
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.lbDrinks = new System.Windows.Forms.ListBox();
             this.lbIngr = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStart
             // 
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStart.Location = new System.Drawing.Point(272, 89);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(212, 90);
             this.btnStart.TabIndex = 0;
@@ -55,7 +54,7 @@
             // 
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.btnBack.Location = new System.Drawing.Point(549, 10);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(136, 66);
             this.btnBack.TabIndex = 2;
@@ -70,7 +69,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.progressBar.Location = new System.Drawing.Point(9, 262);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar.Maximum = 150;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(496, 0);
@@ -82,7 +81,7 @@
             // 
             this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDone.Location = new System.Drawing.Point(549, 210);
-            this.btnDone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDone.Margin = new System.Windows.Forms.Padding(2);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(130, 66);
             this.btnDone.TabIndex = 2;
@@ -109,7 +108,7 @@
             "[drank 5]",
             "[drank 6]"});
             this.lbDrinks.Location = new System.Drawing.Point(19, 10);
-            this.lbDrinks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbDrinks.Margin = new System.Windows.Forms.Padding(2);
             this.lbDrinks.Name = "lbDrinks";
             this.lbDrinks.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbDrinks.ScrollAlwaysVisible = true;
@@ -133,36 +132,25 @@
             "[ingediënt 5]",
             "[ingediënt 6]"});
             this.lbIngr.Location = new System.Drawing.Point(292, 10);
-            this.lbIngr.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbIngr.Margin = new System.Windows.Forms.Padding(2);
             this.lbIngr.Name = "lbIngr";
             this.lbIngr.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbIngr.ScrollAlwaysVisible = true;
             this.lbIngr.Size = new System.Drawing.Size(253, 224);
             this.lbIngr.TabIndex = 5;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(196, 262);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 311);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lbIngr);
             this.Controls.Add(this.lbDrinks);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnStart);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -178,7 +166,6 @@
         private System.IO.Ports.SerialPort serialPort;
         private System.Windows.Forms.ListBox lbDrinks;
         private System.Windows.Forms.ListBox lbIngr;
-        private System.Windows.Forms.Button button1;
     }
 }
 

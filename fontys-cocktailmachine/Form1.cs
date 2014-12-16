@@ -106,11 +106,5 @@ namespace fontys_cocktailmachine
         {
             return String.Format("{0}{1}", prefix, (char) ingredient.Id);
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string test = stringBuilder('x', _ingredients[0]);
-            char val = test[1];
-        }
     }
 }
