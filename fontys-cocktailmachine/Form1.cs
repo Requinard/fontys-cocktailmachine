@@ -7,10 +7,9 @@ namespace fontys_cocktailmachine
 {
     public partial class Form1 : Form
     {
+        private readonly List<Ingredient> _ingredients;
+        private readonly List<Recipe> _recipes;
         private DataBase _connection;
-
-        private List<Ingredient> _ingredients;
-        private List<Recipe> _recipes; 
         private List<Ingredient> recipe;
 
         public Form1()
@@ -31,7 +30,7 @@ namespace fontys_cocktailmachine
         private void initializeRecipeList()
         {
             lbDrinks.Items.Clear();
-            foreach (var item in _recipes)
+            foreach (Recipe item in _recipes)
             {
                 lbDrinks.Items.Add(item.Name);
             }
@@ -40,12 +39,11 @@ namespace fontys_cocktailmachine
         private void initializeIngredientList()
         {
             lbIngr.Items.Clear();
-            foreach (var item in _ingredients)
+            foreach (Ingredient item in _ingredients)
             {
                 lbIngr.Items.Add(item.Name);
             }
         }
-
 
 
         private void InitializeSerialPort()
@@ -64,21 +62,21 @@ namespace fontys_cocktailmachine
             }
             MessageBox.Show("No Arduino Found");
         }
-                       
+
         private void InitializeDatabase()
         {
             _connection = new DataBase();
         }
-        
+
         private void HomeScreen()
-            {
+        {
             btnStart.Visible = true;
             lbDrinks.Visible = false;
             lbIngr.Visible = false;
             btnBack.Text = "Exit";
             btnBack.Visible = true;
             btnDone.Visible = false;
-    }
+        }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
@@ -97,11 +95,11 @@ namespace fontys_cocktailmachine
             {
                 HomeScreen();
             }
-        else if (btnBack.Text == "Exit")
+            else if (btnBack.Text == "Exit")
             {
                 Close();
             }
-        } 
+        }
 
 
         //private void toArduino(string dinges)
@@ -116,14 +114,14 @@ namespace fontys_cocktailmachine
 
         private void lbDrinks_DoubleClick(object sender, EventArgs e)
         {
-            
-            
-        /// <summary>
-        /// Returns a string that can be passed to the arduino for interpretation
-        /// </summary>
-        /// <param name="prefix">The prefix character</param>
-        /// <param name="ingredient">Ingredient that needs execution</param>
-        /// <returns>String that needs to be passed to arduino</returns>
+            /// <summary>
+            /// Returns a string that can be passed to the arduino for interpretation
+            /// </summary>
+            /// <param name="prefix">The prefix character</param>
+            /// <param name="ingredient">Ingredient that needs execution</param>
+            /// <returns>String that needs to be passed to arduino</returns>
+        }
+
         private string stringBuilder(char prefix, Ingredient ingredient)
         {
             return String.Format("{0}{1}", prefix, (char) ingredient.Id);
@@ -141,5 +139,5 @@ namespace fontys_cocktailmachine
                 }
             }
         }
-        }
-     }
+    }
+}
