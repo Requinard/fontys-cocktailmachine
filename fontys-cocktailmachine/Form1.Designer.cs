@@ -36,6 +36,7 @@
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.lbDrinks = new System.Windows.Forms.ListBox();
             this.lbIngr = new System.Windows.Forms.ListBox();
+            this.btnSend = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStart
@@ -88,10 +89,6 @@
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
             // 
-            // serialPort
-            // 
-            this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
-            // 
             // lbDrinks
             // 
             this.lbDrinks.BackColor = System.Drawing.SystemColors.Window;
@@ -107,7 +104,7 @@
             "[drank 4]",
             "[drank 5]",
             "[drank 6]"});
-            this.lbDrinks.Location = new System.Drawing.Point(19, 10);
+            this.lbDrinks.Location = new System.Drawing.Point(41, 11);
             this.lbDrinks.Margin = new System.Windows.Forms.Padding(2);
             this.lbDrinks.Name = "lbDrinks";
             this.lbDrinks.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -115,7 +112,6 @@
             this.lbDrinks.Size = new System.Drawing.Size(270, 224);
             this.lbDrinks.TabIndex = 5;
             this.lbDrinks.SelectedIndexChanged += new System.EventHandler(this.lbDrinks_SelectedIndexChanged);
-            this.lbDrinks.DoubleClick += new System.EventHandler(this.lbDrinks_DoubleClick);
             // 
             // lbIngr
             // 
@@ -141,11 +137,22 @@
             this.lbIngr.TabIndex = 5;
             this.lbIngr.SelectedIndexChanged += new System.EventHandler(this.lbIngr_SelectedIndexChanged);
             // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(551, 82);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(134, 71);
+            this.btnSend.TabIndex = 6;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 311);
+            this.Controls.Add(this.btnSend);
             this.Controls.Add(this.lbIngr);
             this.Controls.Add(this.lbDrinks);
             this.Controls.Add(this.progressBar);
@@ -168,6 +175,7 @@
         private System.IO.Ports.SerialPort serialPort;
         private System.Windows.Forms.ListBox lbDrinks;
         private System.Windows.Forms.ListBox lbIngr;
+        private System.Windows.Forms.Button btnSend;
     }
 }
 

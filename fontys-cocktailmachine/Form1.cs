@@ -101,27 +101,12 @@ namespace fontys_cocktailmachine
             }
         }
 
-
-        //private void toArduino(string dinges)
-        //{
-        //    MessageBox.Show("Lost arduino Connection, ERROR 4y2i4.dll is missing.");
-        //}
-
-
-        private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-        }
-
-        private void lbDrinks_DoubleClick(object sender, EventArgs e)
-        {
-            /// <summary>
-            /// Returns a string that can be passed to the arduino for interpretation
-            /// </summary>
-            /// <param name="prefix">The prefix character</param>
-            /// <param name="ingredient">Ingredient that needs execution</param>
-            /// <returns>String that needs to be passed to arduino</returns>
-        }
-
+        /// <summary>
+        /// Returns a string that can be passed to the arduino for interpretation
+        /// </summary>
+        /// <param name="prefix">The prefix character</param>
+        /// <param name="ingredient">Ingredient that needs execution</param>
+        /// <returns>String that needs to be passed to arduino</returns>
         private string stringBuilder(char prefix, Ingredient ingredient)
         {
             return String.Format("{0}{1}", prefix, (char) ingredient.Id);
@@ -143,6 +128,30 @@ namespace fontys_cocktailmachine
         private void lbIngr_SelectedIndexChanged(object sender, EventArgs e)
         {
             recipe.Add(_ingredients[lbIngr.SelectedIndex]);
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            foreach (Ingredient ingredient in recipe)
+            {
+                string command = stringBuilder('x', ingredient);
+
+                serialWrite(command);
+            }
+        }
+
+        // Will write to arduino and wait for acknowledge
+        private void serialWrite(string write)
+        {
+            // Write to the serial port
+            serialPort.WriteLine(write);
+
+            // Wait until we get a response
+            while (true)
+            {
+                if (serialPort.ReadLine() == "ack")
+                    break;
+            }
         }
     }
 }
