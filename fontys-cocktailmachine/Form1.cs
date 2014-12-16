@@ -142,7 +142,7 @@ namespace fontys_cocktailmachine
 
         private void lbIngr_SelectedIndexChanged(object sender, EventArgs e)
         {
-            recipe.Add(_ingredients[lbDrinks.SelectedIndex]);
+            recipe.Add(_ingredients[lbIngr.SelectedIndex]);
         }
     }
 }
