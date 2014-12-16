@@ -139,6 +139,7 @@
             this.lbIngr.ScrollAlwaysVisible = true;
             this.lbIngr.Size = new System.Drawing.Size(253, 224);
             this.lbIngr.TabIndex = 5;
+            this.lbIngr.SelectedIndexChanged += new System.EventHandler(this.lbIngr_SelectedIndexChanged);
             // 
             // Form1
             // 
