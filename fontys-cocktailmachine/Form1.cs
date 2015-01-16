@@ -131,7 +131,7 @@ namespace fontys_cocktailmachine
 
                 if (!serialWrite(command))
                 {
-                    this.Close();
+                    Close();
                     return;
                 }
             }
@@ -140,7 +140,7 @@ namespace fontys_cocktailmachine
         }
 
         /// <summary>
-        /// Send a string over the serial port and wait for acknowledge
+        ///     Send a string over the serial port and wait for acknowledge
         /// </summary>
         /// <param name="write">String that needs to be sent</param>
         /// <returns>If it returns false, something went wrong during this application</returns>
