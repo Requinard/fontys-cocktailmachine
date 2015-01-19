@@ -160,7 +160,7 @@ namespace fontys_cocktailmachine
             }
             catch (Exception)
             {
-                MessageBox.Show("Somethign went wrong during arduino IO. Please reboot the application");
+                MessageBox.Show("Something went wrong during arduino IO. Please reboot the application");
                 return false;
             }
 
