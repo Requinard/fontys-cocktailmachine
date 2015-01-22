@@ -10,10 +10,7 @@ namespace fontys_cocktailmachine
         private const string connString = "SERVER=terarion.com;PORT=3306;DATABASE=fontys;UID=fontys;PASSWORD=proftaak;";
         private readonly MySqlConnection _connection;
 
-        public DataBase()
-        {
-            _connection = new MySqlConnection(connString);
-
+        public DataBase(){
             _connection.Open();
         }
 

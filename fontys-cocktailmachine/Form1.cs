@@ -69,6 +69,7 @@ namespace fontys_cocktailmachine
             btnBack.Text = "Exit";
             btnBack.Visible = true;
             btnDone.Visible = false;
+            btnSend.Visible = false;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -79,6 +80,7 @@ namespace fontys_cocktailmachine
             btnBack.Text = "Back";
             btnBack.Visible = true;
             btnDone.Visible = false;
+            btnSend.Visible = true;
             recipe = new List<Ingredient>();
         }
 
