@@ -76,14 +76,9 @@ namespace fontys_cocktailmachine
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            btnStart.Visible = false;
-            lbDrinks.Visible = true;
-            lbIngr.Visible = true;
-            btnBack.Text = "Back";
-            btnBack.Visible = true;
-            btnDone.Visible = false;
-            btnSend.Visible = true;
-            recipe = new List<Ingredient>();
+            btnVoorgemaakte.Visible = true;
+            btnZelfgemaakt.Visible = true;
+            btnStart.Visible = false;            
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -180,6 +175,8 @@ namespace fontys_cocktailmachine
             btnBack.Visible = true;
             btnDone.Visible = false;
             btnSend.Visible = true;
+            btnVoorgemaakte.Visible = false;
+            btnZelfgemaakt.Visible = false;
             recipe = new List<Ingredient>();
         }
 
@@ -192,6 +189,8 @@ namespace fontys_cocktailmachine
             btnBack.Visible = true;
             btnDone.Visible = false;
             btnSend.Visible = true;
+            btnVoorgemaakte.Visible = false;
+            btnZelfgemaakt.Visible = false;
             recipe = new List<Ingredient>();
         }
     }

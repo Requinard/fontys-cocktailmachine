@@ -153,7 +153,7 @@
             // btnZelfgemaakt
             // 
             this.btnZelfgemaakt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.btnZelfgemaakt.Location = new System.Drawing.Point(46, 160);
+            this.btnZelfgemaakt.Location = new System.Drawing.Point(71, 127);
             this.btnZelfgemaakt.Name = "btnZelfgemaakt";
             this.btnZelfgemaakt.Size = new System.Drawing.Size(208, 73);
             this.btnZelfgemaakt.TabIndex = 7;
@@ -164,7 +164,7 @@
             // btnVoorgemaakte
             // 
             this.btnVoorgemaakte.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.btnVoorgemaakte.Location = new System.Drawing.Point(417, 160);
+            this.btnVoorgemaakte.Location = new System.Drawing.Point(417, 131);
             this.btnVoorgemaakte.Name = "btnVoorgemaakte";
             this.btnVoorgemaakte.Size = new System.Drawing.Size(208, 73);
             this.btnVoorgemaakte.TabIndex = 8;
