@@ -37,6 +37,8 @@
             this.lbDrinks = new System.Windows.Forms.ListBox();
             this.lbIngr = new System.Windows.Forms.ListBox();
             this.btnSend = new System.Windows.Forms.Button();
+            this.btnZelfgemaakt = new System.Windows.Forms.Button();
+            this.btnVoorgemaakte = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStart
@@ -91,7 +93,7 @@
             // 
             // lbDrinks
             // 
-            this.lbDrinks.BackColor = System.Drawing.SystemColors.Window;
+            this.lbDrinks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lbDrinks.Cursor = System.Windows.Forms.Cursors.Default;
             this.lbDrinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.2F);
             this.lbDrinks.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -128,7 +130,7 @@
             "[ingediënt 4]",
             "[ingediënt 5]",
             "[ingediënt 6]"});
-            this.lbIngr.Location = new System.Drawing.Point(209, 10);
+            this.lbIngr.Location = new System.Drawing.Point(209, 11);
             this.lbIngr.Margin = new System.Windows.Forms.Padding(2);
             this.lbIngr.Name = "lbIngr";
             this.lbIngr.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -148,12 +150,36 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
+            // btnZelfgemaakt
+            // 
+            this.btnZelfgemaakt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.btnZelfgemaakt.Location = new System.Drawing.Point(46, 160);
+            this.btnZelfgemaakt.Name = "btnZelfgemaakt";
+            this.btnZelfgemaakt.Size = new System.Drawing.Size(208, 73);
+            this.btnZelfgemaakt.TabIndex = 7;
+            this.btnZelfgemaakt.Text = "Maak een nieuwe drank!";
+            this.btnZelfgemaakt.UseVisualStyleBackColor = true;
+            this.btnZelfgemaakt.Click += new System.EventHandler(this.btnZelfgemaakt_Click);
+            // 
+            // btnVoorgemaakte
+            // 
+            this.btnVoorgemaakte.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btnVoorgemaakte.Location = new System.Drawing.Point(417, 160);
+            this.btnVoorgemaakte.Name = "btnVoorgemaakte";
+            this.btnVoorgemaakte.Size = new System.Drawing.Size(208, 73);
+            this.btnVoorgemaakte.TabIndex = 8;
+            this.btnVoorgemaakte.Text = "Maak een voorgemaakte drank!";
+            this.btnVoorgemaakte.UseVisualStyleBackColor = true;
+            this.btnVoorgemaakte.Click += new System.EventHandler(this.btnVoorgemaakte_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(688, 311);
+            this.Controls.Add(this.btnVoorgemaakte);
+            this.Controls.Add(this.btnZelfgemaakt);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.lbIngr);
             this.Controls.Add(this.lbDrinks);
@@ -178,6 +204,8 @@
         private System.Windows.Forms.ListBox lbDrinks;
         private System.Windows.Forms.ListBox lbIngr;
         private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Button btnZelfgemaakt;
+        private System.Windows.Forms.Button btnVoorgemaakte;
     }
 }
 
