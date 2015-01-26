@@ -74,6 +74,7 @@ namespace fontys_cocktailmachine
             btnVoorgemaakte.Visible = false;
             btnDeleteIng.Visible = false;
             lbRecipe.Visible = false;
+            btnDeleteDrink.Visible = false;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -85,6 +86,9 @@ namespace fontys_cocktailmachine
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            recipe.Clear();
+            SetListboxToRecipe();
+
             if (btnBack.Text == "Back")
             {
                 HomeScreen();
@@ -117,6 +121,7 @@ namespace fontys_cocktailmachine
                     recipe.Add(ingredient);
                 }
             }
+            SetListboxToRecipe();
         }
 
         private void lbIngr_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,10 +141,14 @@ namespace fontys_cocktailmachine
             if (recipe.Count >= MAXAANTALINGREDIENTEN)
             {
                 lbIngr.Enabled = false;
+                lbDrinks.Enabled = false;
+                lblMaxBereikt.Visible = true;
             }
             else
             {
                 lbIngr.Enabled = true;
+                lbIngr.Enabled = true;
+                lblMaxBereikt.Visible = false;
             }
         }
 
@@ -204,6 +213,8 @@ namespace fontys_cocktailmachine
             btnZelfgemaakt.Visible = false;
             btnDeleteIng.Visible = true;
             lbRecipe.Visible = true;
+            btnDeleteDrink.Visible = false;
+            
             recipe = new List<Ingredient>();
         }
 
@@ -219,13 +230,30 @@ namespace fontys_cocktailmachine
             btnVoorgemaakte.Visible = false;
             btnZelfgemaakt.Visible = false;
             recipe = new List<Ingredient>();
-            lbRecipe.Visible = false;
+            lbRecipe.Visible = true;
+            btnDeleteDrink.Visible = true;
+            lbDrinks.Enabled = true;
         }
 
         private void btnDeleteIng_Click(object sender, EventArgs e)
         {
-            recipe.RemoveAt(lbRecipe.SelectedIndex);
+            if (lbRecipe.SelectedItem == null)
+            {
+                MessageBox.Show("Nothing was selected");
+            }
+            else
+            {
+                recipe.RemoveAt(lbRecipe.SelectedIndex);
+                SetListboxToRecipe();
+            }
+            
+        }
+
+        private void btnDeleteDrink_Click(object sender, EventArgs e)
+        {
+            recipe.Clear();
             SetListboxToRecipe();
+            lbDrinks.Enabled = true;
         }
     }
 }

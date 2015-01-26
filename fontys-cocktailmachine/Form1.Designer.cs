@@ -41,6 +41,8 @@
             this.btnVoorgemaakte = new System.Windows.Forms.Button();
             this.lbRecipe = new System.Windows.Forms.ListBox();
             this.btnDeleteIng = new System.Windows.Forms.Button();
+            this.btnDeleteDrink = new System.Windows.Forms.Button();
+            this.lblMaxBereikt = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -176,10 +178,12 @@
             // 
             // lbRecipe
             // 
+            this.lbRecipe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.lbRecipe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbRecipe.FormattingEnabled = true;
             this.lbRecipe.Location = new System.Drawing.Point(404, 15);
             this.lbRecipe.Name = "lbRecipe";
-            this.lbRecipe.Size = new System.Drawing.Size(138, 186);
+            this.lbRecipe.Size = new System.Drawing.Size(138, 184);
             this.lbRecipe.TabIndex = 9;
             this.lbRecipe.Visible = false;
             // 
@@ -194,12 +198,36 @@
             this.btnDeleteIng.Visible = false;
             this.btnDeleteIng.Click += new System.EventHandler(this.btnDeleteIng_Click);
             // 
+            // btnDeleteDrink
+            // 
+            this.btnDeleteDrink.Location = new System.Drawing.Point(252, 85);
+            this.btnDeleteDrink.Name = "btnDeleteDrink";
+            this.btnDeleteDrink.Size = new System.Drawing.Size(113, 36);
+            this.btnDeleteDrink.TabIndex = 11;
+            this.btnDeleteDrink.Text = "Herstel";
+            this.btnDeleteDrink.UseVisualStyleBackColor = true;
+            this.btnDeleteDrink.Click += new System.EventHandler(this.btnDeleteDrink_Click);
+            // 
+            // lblMaxBereikt
+            // 
+            this.lblMaxBereikt.AutoSize = true;
+            this.lblMaxBereikt.Font = new System.Drawing.Font("Arial Black", 8.3F);
+            this.lblMaxBereikt.ForeColor = System.Drawing.Color.Red;
+            this.lblMaxBereikt.Location = new System.Drawing.Point(360, 208);
+            this.lblMaxBereikt.Name = "lblMaxBereikt";
+            this.lblMaxBereikt.Size = new System.Drawing.Size(222, 17);
+            this.lblMaxBereikt.TabIndex = 12;
+            this.lblMaxBereikt.Text = "Maximum ingredienten is bereikt";
+            this.lblMaxBereikt.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(688, 311);
+            this.Controls.Add(this.lblMaxBereikt);
+            this.Controls.Add(this.btnDeleteDrink);
             this.Controls.Add(this.btnDeleteIng);
             this.Controls.Add(this.lbRecipe);
             this.Controls.Add(this.btnVoorgemaakte);
@@ -215,6 +243,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -232,6 +261,8 @@
         private System.Windows.Forms.Button btnVoorgemaakte;
         private System.Windows.Forms.ListBox lbRecipe;
         private System.Windows.Forms.Button btnDeleteIng;
+        private System.Windows.Forms.Button btnDeleteDrink;
+        private System.Windows.Forms.Label lblMaxBereikt;
     }
 }
 
