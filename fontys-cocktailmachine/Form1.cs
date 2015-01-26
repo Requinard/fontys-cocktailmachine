@@ -122,6 +122,7 @@ namespace fontys_cocktailmachine
                 }
             }
             SetListboxToRecipe();
+            lbDrinks.Enabled = false;
         }
 
         private void lbIngr_SelectedIndexChanged(object sender, EventArgs e)
@@ -146,9 +147,12 @@ namespace fontys_cocktailmachine
             }
             else
             {
-                lbIngr.Enabled = true;
-                lbIngr.Enabled = true;
-                lblMaxBereikt.Visible = false;
+                
+                    lbIngr.Enabled = true;
+                    lbIngr.Enabled = true;
+                    lblMaxBereikt.Visible = false;
+                
+                
             }
         }
 
