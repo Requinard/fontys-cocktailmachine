@@ -11,7 +11,7 @@ namespace fontys_cocktailmachine
         private readonly List<Recipe> _recipes;
         private DataBase _connection;
         private List<Ingredient> recipe;
-
+        private const int MAXAANTALINGREDIENTEN = 5;
         public Form1()
         {
             InitializeComponent();
@@ -72,6 +72,8 @@ namespace fontys_cocktailmachine
             btnSend.Visible = false;
             btnZelfgemaakt.Visible = false;
             btnVoorgemaakte.Visible = false;
+            btnDeleteIng.Visible = false;
+            lbRecipe.Visible = false;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -120,6 +122,25 @@ namespace fontys_cocktailmachine
         private void lbIngr_SelectedIndexChanged(object sender, EventArgs e)
         {
             recipe.Add(_ingredients[lbIngr.SelectedIndex]);
+            SetListboxToRecipe();
+          
+        }
+
+        private void SetListboxToRecipe()
+        {
+            lbRecipe.Items.Clear();
+            foreach (var ingr in recipe)
+            {
+                lbRecipe.Items.Add(ingr.Name);
+            }
+            if (recipe.Count >= MAXAANTALINGREDIENTEN)
+            {
+                lbIngr.Enabled = false;
+            }
+            else
+            {
+                lbIngr.Enabled = true;
+            }
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -136,6 +157,10 @@ namespace fontys_cocktailmachine
             }
 
             recipe.Clear();
+            if (!lbIngr.Enabled)
+            {
+                lbIngr.Enabled = true; 
+            }
         }
 
         /// <summary>
@@ -169,7 +194,7 @@ namespace fontys_cocktailmachine
         private void btnZelfgemaakt_Click(object sender, EventArgs e)
         {
             btnStart.Visible = false;
-            lbDrinks.Visible = true;
+            lbDrinks.Visible = false;
             lbIngr.Visible = true;
             btnBack.Text = "Back";
             btnBack.Visible = true;
@@ -177,6 +202,8 @@ namespace fontys_cocktailmachine
             btnSend.Visible = true;
             btnVoorgemaakte.Visible = false;
             btnZelfgemaakt.Visible = false;
+            btnDeleteIng.Visible = true;
+            lbRecipe.Visible = true;
             recipe = new List<Ingredient>();
         }
 
@@ -192,6 +219,13 @@ namespace fontys_cocktailmachine
             btnVoorgemaakte.Visible = false;
             btnZelfgemaakt.Visible = false;
             recipe = new List<Ingredient>();
+            lbRecipe.Visible = false;
+        }
+
+        private void btnDeleteIng_Click(object sender, EventArgs e)
+        {
+            recipe.RemoveAt(lbRecipe.SelectedIndex);
+            SetListboxToRecipe();
         }
     }
 }

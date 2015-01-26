@@ -39,6 +39,8 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.btnZelfgemaakt = new System.Windows.Forms.Button();
             this.btnVoorgemaakte = new System.Windows.Forms.Button();
+            this.lbRecipe = new System.Windows.Forms.ListBox();
+            this.btnDeleteIng = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStart
@@ -172,12 +174,34 @@
             this.btnVoorgemaakte.UseVisualStyleBackColor = true;
             this.btnVoorgemaakte.Click += new System.EventHandler(this.btnVoorgemaakte_Click);
             // 
+            // lbRecipe
+            // 
+            this.lbRecipe.FormattingEnabled = true;
+            this.lbRecipe.Location = new System.Drawing.Point(404, 15);
+            this.lbRecipe.Name = "lbRecipe";
+            this.lbRecipe.Size = new System.Drawing.Size(138, 186);
+            this.lbRecipe.TabIndex = 9;
+            this.lbRecipe.Visible = false;
+            // 
+            // btnDeleteIng
+            // 
+            this.btnDeleteIng.Location = new System.Drawing.Point(405, 225);
+            this.btnDeleteIng.Name = "btnDeleteIng";
+            this.btnDeleteIng.Size = new System.Drawing.Size(100, 37);
+            this.btnDeleteIng.TabIndex = 10;
+            this.btnDeleteIng.Text = "Delete";
+            this.btnDeleteIng.UseVisualStyleBackColor = true;
+            this.btnDeleteIng.Visible = false;
+            this.btnDeleteIng.Click += new System.EventHandler(this.btnDeleteIng_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(688, 311);
+            this.Controls.Add(this.btnDeleteIng);
+            this.Controls.Add(this.lbRecipe);
             this.Controls.Add(this.btnVoorgemaakte);
             this.Controls.Add(this.btnZelfgemaakt);
             this.Controls.Add(this.btnSend);
@@ -206,6 +230,8 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnZelfgemaakt;
         private System.Windows.Forms.Button btnVoorgemaakte;
+        private System.Windows.Forms.ListBox lbRecipe;
+        private System.Windows.Forms.Button btnDeleteIng;
     }
 }
 
