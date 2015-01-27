@@ -11,7 +11,7 @@ namespace fontys_cocktailmachine
         private readonly List<Recipe> _recipes;
         private DataBase _connection;
         private List<Ingredient> recipe;
-
+        private const int MAXAANTALINGREDIENTEN = 5;
         public Form1()
         {
             InitializeComponent();
@@ -69,21 +69,26 @@ namespace fontys_cocktailmachine
             btnBack.Text = "Exit";
             btnBack.Visible = true;
             btnDone.Visible = false;
+            btnSend.Visible = false;
+            btnZelfgemaakt.Visible = false;
+            btnVoorgemaakte.Visible = false;
+            btnDeleteIng.Visible = false;
+            lbRecipe.Visible = false;
+            btnDeleteDrink.Visible = false;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            btnStart.Visible = false;
-            lbDrinks.Visible = true;
-            lbIngr.Visible = true;
-            btnBack.Text = "Back";
-            btnBack.Visible = true;
-            btnDone.Visible = false;
-            recipe = new List<Ingredient>();
+            btnVoorgemaakte.Visible = true;
+            btnZelfgemaakt.Visible = true;
+            btnStart.Visible = false;            
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            recipe.Clear();
+            SetListboxToRecipe();
+
             if (btnBack.Text == "Back")
             {
                 HomeScreen();
@@ -116,11 +121,39 @@ namespace fontys_cocktailmachine
                     recipe.Add(ingredient);
                 }
             }
+            SetListboxToRecipe();
+            lbDrinks.Enabled = false;
         }
 
         private void lbIngr_SelectedIndexChanged(object sender, EventArgs e)
         {
             recipe.Add(_ingredients[lbIngr.SelectedIndex]);
+            SetListboxToRecipe();
+          
+        }
+
+        private void SetListboxToRecipe()
+        {
+            lbRecipe.Items.Clear();
+            foreach (var ingr in recipe)
+            {
+                lbRecipe.Items.Add(ingr.Name);
+            }
+            if (recipe.Count >= MAXAANTALINGREDIENTEN)
+            {
+                lbIngr.Enabled = false;
+                lbDrinks.Enabled = false;
+                lblMaxBereikt.Visible = true;
+            }
+            else
+            {
+                
+                    lbIngr.Enabled = true;
+                    lbIngr.Enabled = true;
+                    lblMaxBereikt.Visible = false;
+                
+                
+            }
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -137,6 +170,10 @@ namespace fontys_cocktailmachine
             }
 
             recipe.Clear();
+            if (!lbIngr.Enabled)
+            {
+                lbIngr.Enabled = true; 
+            }
         }
 
         /// <summary>
@@ -160,11 +197,67 @@ namespace fontys_cocktailmachine
             }
             catch (Exception)
             {
-                MessageBox.Show("Somethign went wrong during arduino IO. Please reboot the application");
+                MessageBox.Show("Something went wrong during arduino IO. Please reboot the application");
                 return false;
             }
 
             return true;
+        }
+
+        private void btnZelfgemaakt_Click(object sender, EventArgs e)
+        {
+            btnStart.Visible = false;
+            lbDrinks.Visible = false;
+            lbIngr.Visible = true;
+            btnBack.Text = "Back";
+            btnBack.Visible = true;
+            btnDone.Visible = false;
+            btnSend.Visible = true;
+            btnVoorgemaakte.Visible = false;
+            btnZelfgemaakt.Visible = false;
+            btnDeleteIng.Visible = true;
+            lbRecipe.Visible = true;
+            btnDeleteDrink.Visible = false;
+            
+            recipe = new List<Ingredient>();
+        }
+
+        private void btnVoorgemaakte_Click(object sender, EventArgs e)
+        {
+            btnStart.Visible = false;
+            lbDrinks.Visible = true;
+            lbIngr.Visible = false;
+            btnBack.Text = "Back";
+            btnBack.Visible = true;
+            btnDone.Visible = false;
+            btnSend.Visible = true;
+            btnVoorgemaakte.Visible = false;
+            btnZelfgemaakt.Visible = false;
+            recipe = new List<Ingredient>();
+            lbRecipe.Visible = true;
+            btnDeleteDrink.Visible = true;
+            lbDrinks.Enabled = true;
+        }
+
+        private void btnDeleteIng_Click(object sender, EventArgs e)
+        {
+            if (lbRecipe.SelectedItem == null)
+            {
+                MessageBox.Show("Nothing was selected");
+            }
+            else
+            {
+                recipe.RemoveAt(lbRecipe.SelectedIndex);
+                SetListboxToRecipe();
+            }
+            
+        }
+
+        private void btnDeleteDrink_Click(object sender, EventArgs e)
+        {
+            recipe.Clear();
+            SetListboxToRecipe();
+            lbDrinks.Enabled = true;
         }
     }
 }

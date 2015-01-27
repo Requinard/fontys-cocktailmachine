@@ -12,8 +12,7 @@ namespace fontys_cocktailmachine
 
         public DataBase()
         {
-            _connection = new MySqlConnection(connString);
-
+            _connection = new MySqlConnection(connString);        
             _connection.Open();
         }
 
