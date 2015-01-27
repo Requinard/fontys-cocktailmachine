@@ -50,9 +50,14 @@ namespace fontys_cocktailmachine
             return ds.Tables[0].Rows;
         }
 
+        /// <summary>
+        /// Returns raw mysql rows for specific recipes
+        /// </summary>
+        /// <param name="recipeID">ID of the recipe of which you need ingredients</param>
+        /// <returns></returns>
         private DataRowCollection GetRecipeIngredients(int recipeID)
         {
-            string query = String.Format("SELECT * FROM recipe where item = {0}", recipeID);
+            string query = String.Format("  ", recipeID);
             DataSet ds = QueryDatabase(query);
 
             return ds.Tables[0].Rows;
